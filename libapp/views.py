@@ -19,8 +19,10 @@ def handle_uploaded_file(f,i):
 			destination.write(chunk)
 	destination.close()
 	arg=shlex.split("g++ -I/usr/local/include/opencv -I/usr/local/include "+f.name+" /usr/local/lib/libopencv_calib3d.so /usr/local/lib/libopencv_contrib.so /usr/local/lib/libopencv_core.so /usr/local/lib/libopencv_features2d.so /usr/local/lib/libopencv_flann.so /usr/local/lib/libopencv_gpu.so /usr/local/lib/libopencv_highgui.so /usr/local/lib/libopencv_imgproc.so /usr/local/lib/libopencv_legacy.so /usr/local/lib/libopencv_ml.so /usr/local/lib/libopencv_nonfree.so /usr/local/lib/libopencv_objdetect.so /usr/local/lib/libopencv_photo.so /usr/local/lib/libopencv_stitching.so /usr/local/lib/libopencv_superres.so /usr/local/lib/libopencv_ts.so /usr/local/lib/libopencv_video.so /usr/local/lib/libopencv_videostab.so -o output")
-	out=subprocess.call(arg,shell=False);
-	print out
+	compilemessage = open("compilemessage",'wb+')
+	out=subprocess.call(arg,stderr=compilemessage,shell=False)
+#subprocess(["rm","-f",f.name],shell=False)
+	return out
 
 def upload_file(request):
 	l=[]
@@ -33,13 +35,23 @@ def upload_file(request):
 #           form.save()
 		for line in f:
 			l.append(line)
-		handle_uploaded_file(f,i)
+		arg = handle_uploaded_file(f,i)
 	else:
 		form = UploadFileForm()
 
 	print request
 	print request.FILES
-	return render_to_response('home.html', {'content': l},context_instance=RequestContext(request))
+	if arg==0 :
+		val = 'Successfully Compiled'
+	else :
+		val = "Compile Failed"
+	complmess = []
+	fil = open("compilemessage", 'r+')
+	for chunk in fil:
+		complmess.append(chunk)
+	fil.close()
+#subprocess.call(["rm","-f","compilemessage.txt",],shell=False)
+	return render_to_response('submitted.html', {'content': l, 'message':val, 'compilemessage':complmess,},context_instance=RequestContext(request))
 #    return HttpResponseRedirect("/",l)
 
 def login(request):

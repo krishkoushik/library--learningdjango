@@ -4,6 +4,7 @@
 *.so
 
 *.~
+*.swp
 libdb
 
 # Packages
