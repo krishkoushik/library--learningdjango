@@ -1,0 +1,14 @@
+<html>
+<head><title>Book Info</title></head>
+<body>
+Book Name : {{book.name}}<br/>
+Book Author : 
+<ul>
+{% for i in book.author.all %}
+	<li><a href = '/authorinfo/{{i.id}}'>{{i.name}}<br/></a></li>
+{% endfor %}
+</ul>
+Book Publisher : <a href = '/publisherinfo/{{book.publisher.id}}'>{{book.publisher}}<br/></a>
+Book Genre : <a href = '/genreinfo/{{book.genre.id}}'>{{book.genre}}<br/></a>
+</body>
+</html>

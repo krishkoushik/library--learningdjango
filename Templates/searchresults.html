@@ -1,0 +1,11 @@
+<html>
+<head><title>Search Results</title></head>
+<body>
+<h1>Search Results : </h1>
+<h2>{{choice}}</h2>
+<ol>
+{% for i in lis %}
+	<a href = '/{{div}}/{{i.id}}'><li>{{i.name}}</li></a>
+{% endfor %}
+</ol>
+</html>

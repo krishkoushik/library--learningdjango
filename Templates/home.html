@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>
+Home Page
+</title>
+</head>
+<body>
+Hello, You are home, {{user}}
+<br/>
+<a href="/logout">Logout</a>
+<form method='GET' action='/search'> 
+Search : <input type='text' name='search'><br/>
+<input type='radio' value='Books' name='choice' checked>Books</input>
+<input type='radio' value='Authors' name='choice'>Authors</input>
+<input type='radio' value='Publishers' name='choice'>Publishers</input>
+<input type='radio' value='Genres' name='choice'>Genres</input><br/>
+<input type='submit'>
+</form>
+<br/>
+View By:
+<ul>
+<a href = '/viewbooks'><li>Books</li></a>
+<a href = '/viewauthors'><li>Authors</li></a>
+<a href = '/viewpublishers'><li>Publisher</li></a>
+<a href = '/viewgenres'><li>Genre</li></a>
+<form enctype='multipart/form-data' action='/upload_file/' method='POST'>
+{% csrf_token %}
+<label for="file">Filename:</label>
+<input type="file" name="file1" id="file1"><br>
+<input type="file" name="file2" id="file2"><br>
+<input type="submit" name="submit" value="Submit">
+</form>
+<pre>
+<code>
+{% for i in content %}
+{{ i }}
+{% endfor %}
+</code>
+</pre>
+</body>
+</html>

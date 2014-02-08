@@ -1,0 +1,11 @@
+<html>
+<head><title>Book Info</title></head>
+<body>
+Publisher Name : {{publ.name}}<br/>
+Books Published by this publisher:
+<ol>
+{% for i in lis %}
+	<a href = '/bookinfo/{{i.id}}'><li>{{i.name}}</li></a>
+{% endfor %}
+</body>
+</html>

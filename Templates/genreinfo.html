@@ -1,0 +1,11 @@
+<html>
+<head><title>Book Info</title></head>
+<body>
+Genre Name : {{genr.name}}<br/>
+Books in this Genre :
+<ol>
+{% for i in lis %}
+	<a href = '/bookinfo/{{i.id}}'><li>{{i.name}}</li></a>
+{% endfor %}
+</body>
+</html>

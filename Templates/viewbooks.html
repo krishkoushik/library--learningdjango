@@ -1,0 +1,15 @@
+<html>
+<head>
+<title>
+ViewBooks
+</title>
+</head>
+<body>
+The list of books are: <br/>
+<ol>
+	{% for i in lis %}
+		<a href = '/bookinfo/{{i.id}}'><li>{{i}}</li></a>
+	{% endfor %}
+</ol>
+</body>
+</html>
