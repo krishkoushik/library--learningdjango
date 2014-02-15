@@ -25,9 +25,10 @@ View By:
 <a href = '/viewgenres'><li>Genre</li></a>
 <form enctype='multipart/form-data' action='/upload_file/' method='POST'>
 {% csrf_token %}
-<label for="file">Filename:</label>
-<input type="file" name="file1" id="file1"><br>
-<input type="file" name="file2" id="file2"><br>
+<!--<input type="file" name="fil_e" id="fil_e"><br>
+<input type="file" name="imag_e" id="imag_e"><br>
+<input type="submit" name="submit" value="Submit">-->
+{{form}}
 <input type="submit" name="submit" value="Submit">
 </form>
 <pre>

@@ -18,6 +18,7 @@ urlpatterns = patterns('',
 	url(r'^genreinfo/(?P<genre_id>\d+)/$', 'libapp.views.genreinfo', name = 'genreinfo'),
 	url(r'^search/', 'libapp.views.search', name = 'search'),
 	url(r'^upload_file/', 'libapp.views.upload_file', name = 'upload'),
+	url(r'^viewsubmission/', 'libapp.views.handle_uploaded_file', name = 'viewsubmission'),
 #url(r'^library/', include('library.libapp.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

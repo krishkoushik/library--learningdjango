@@ -1,22 +1,63 @@
 <html>
 <head>
 <title></title>
+<script>
+function loadXMLDoc(url)
+{
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	{// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			document.getElementById('p1').innerHTML="Poda";//xmlhttp.getAllResponseHeaders();
+		}
+	}
+	xmlhttp.open("GET",url,true);
+	xmlhttp.send();
+}
+//var refint = setInterval(function(){alert("Hi");/*loadXMLDoc('result.txt')*/},3000);
+</script>
 </head>
+
 <body>
-<h1>{{ message }}</h1>
+<h1>{{ code.compilemessage }}</h1>
 <h3>Compile Message</h3>
+
 <hr>
-<pre>
-{% for i in compilemessage %}
-{{ i }}
-{% endfor %}
-</pre>
+	<pre>
+	{% for i in compile %}
+	{{ i }}
+	{% endfor %}
+	</pre>
 <hr>
+
+<h3>Runtime message</h3>
+<hr>
+	<pre>
+	{% for i in runtime %}
+	{{ i }}
+	{% endfor %}
+	</pre>
+<hr>
+
+
+<!--<p id="p1">The getAllResponseHeaders() function returns the header information of a resource, like length, server-type, content-type, last-modified, etc.</p>
+<button onclick='clearInterval(refint)'>Hello</button>-->
+<hr>
+
 <pre>
 <code>
-{% for i in content %}
-{{ i }}
-{% endfor %}
+	{% for i in fil_e %}
+	{{ i }}
+	{% endfor %}
 </code>
 </pre>
 </body>
