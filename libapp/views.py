@@ -30,7 +30,11 @@ def handle_uploaded_file(request):
 		code.compilemessage = 'Successfully Compiled'
 		arg=shlex.split("./output")
 		runt = open("runtimemessage.txt","wb+")
-		out=subprocess.call(arg,stderr=runt,shell=False)
+		out=subprocess.Popen(arg,stderr=runt,shell=False)
+		
+		print out.pid
+		subprocess.Popen(['bash','memcheck.sh',str(out.pid)],shell=False);
+		atdo,stder = out.communicate()
 		runt.close()
 	else :
 		code.compilemessage = "Compile Failed"
